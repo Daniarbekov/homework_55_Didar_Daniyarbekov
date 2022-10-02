@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title%}Home{% endblock %}
+{% block content %}
+<div class="card-box" style="flex-direction: row;">
+<form action="{% url 'index' %}" method="POST">
+    {% csrf_token %} 
+            <input type="submit" value="удалить">
+            {% for task in tasks %}
+            <div class="card text-bg-secondary mb-3">
+                <div class="card-header">
+                    <h5>{{task.title}}</h5>
+                    <input type="checkbox" name="delete" value="{{task.pk}}">
+                </div>
+                <div class="card-body">
+                    {% if task.date%}
+                    <h5 class="card-title"></h5>
+                    {% endif %}
+                    <p class="card-text">Статус:{{task.status}}</p>
+                    <a href="#" class="btn btn-light">Редактировать</a>
+                    <a href="#" class="btn btn-light">Удалить</a>
+                </div>
+              </div>
+          {% endfor %}
+        </form>
+    </div>
+{% endblock %}
+
