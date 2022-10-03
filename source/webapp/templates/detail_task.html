@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title%}Detail{% endblock%}
+    {% block content%}
+    <div class="task-box">
+        <div class="prod-desc">
+        <h1>{{task.title}}</h1>
+        <h4>Статус: {{task.status}}</h4>
+        {%if task.date %}
+            <p>Дата выполнения:{{task.date}}</p>
+        {%else%}
+            <p>Дата выполнения: не указано</p>
+        {% endif %}
+        {%if not task.description%}
+            <p>Подробное описание: отсутствует</p>
+        {%else%}
+            <p>Подробное описание:{{task.description}}</p>
+        {% endif %}
+
+    </div>
+    <div class="detail-task-links">
+        <a href="#">Edit</a>
+        <a href="#">Delete</a>
+    </div>
+    </div>
+    </div>
+    </div>
+    {% endblock %}

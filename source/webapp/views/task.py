@@ -12,4 +12,8 @@ def task_create_view(request, *args, **kwargs):
         return render(request, 'task_create.html', context={'form': form})
     task = Task.objects.create(**form.cleaned_data)        
     if request.method =='POST':
-        return redirect('task_detail', pk=task.pk)
+        return redirect('detail_task', pk=task.pk)
+
+def detail_view(request,pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'detail_task.html', context={'task': task})
