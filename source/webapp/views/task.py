@@ -39,3 +39,11 @@ def task_update_view(request, pk):
             return redirect('detail_task', pk=task.pk)
         else:
             return render(request, 'update.html', context={'form': form, 'task': task})
+
+def task_delete_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'GET':
+       return render(request, 'delete.html', context={'task': task})
+    elif request.method == 'POST':
+        task.delete()
+        return redirect('index')
