@@ -17,3 +17,25 @@ def task_create_view(request, *args, **kwargs):
 def detail_view(request,pk):
     task = get_object_or_404(Task, pk=pk)
     return render(request, 'detail_task.html', context={'task': task})
+
+def task_update_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'GET':
+        form = TaskForm(initial={
+            'title': task.title, 
+            'date': task.date,
+            'status': task.status,
+            'description':task.description
+        })
+        return render(request, 'update.html', context={'form': form})
+    elif request.method == 'POST':
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            task.title = form.cleaned_data['title']
+            task.date = form.cleaned_data['date']
+            task.status = form.cleaned_data['status']
+            task.description = form.cleaned_data['description']
+            task.save()
+            return redirect('detail_task', pk=task.pk)
+        else:
+            return render(request, 'update.html', context={'form': form, 'task': task})
