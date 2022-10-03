@@ -1,0 +1,62 @@
+.container{
+    margin: auto;
+    width: 1080px;
+    position: relative;
+}
+.navbar{
+    margin-bottom: 30px;
+}
+body{
+    background: lightgrey;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+.form{
+    padding-top: 10px;
+    margin: auto;
+    width: 500px;
+    height: 600px;
+    border-radius: 10%;
+}
+input, select{
+    margin: 10px;
+    width: 150px;
+    border-radius: 5px;
+}
+a{
+    box-sizing: border-box;
+    border-radius: 5%;
+    background: white;
+    padding: 10px 30px 10px 30px;
+    text-decoration: none;
+}
+
+label{
+    width: 100px;
+}
+h1, h3{
+    margin: 30px;
+}
+.check-delete, .menu{
+    position: absolute;
+    right: 5px;
+}
+.check-delete{
+    margin: 0;
+    width: 15px;
+}
+.card-box{
+    margin-top: 50px;
+}
+.index-del-btn{
+    margin-left: 0;
+    width: 200px;
+}
+.link{
+    width: 150px;
+}
+.errorlist li{
+    color: red;
+}
+.delete-form{
+    text-align: center;
+}

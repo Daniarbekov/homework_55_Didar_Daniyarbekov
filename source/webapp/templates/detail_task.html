@@ -1,27 +1,26 @@
 {% extends 'base.html' %}
 {% block title%}Detail{% endblock%}
     {% block content%}
-    <div class="task-box">
-        <div class="prod-desc">
-        <h1>{{task.title}}</h1>
-        <h4>Статус: {{task.status}}</h4>
+    <div class="card text-bg-secondary mb-3">
+        <div class="card-header">
+            <h5>{{task.title}}</h5>
+        </div>
+        <div class="card-body">
         {%if task.date %}
             <p>Дата выполнения:{{task.date}}</p>
         {%else%}
             <p>Дата выполнения: не указано</p>
         {% endif %}
+        <p>Статус: {{task.status}}</p>
         {%if not task.description%}
             <p>Подробное описание: отсутствует</p>
         {%else%}
-            <p>Подробное описание:{{task.description}}</p>
+            <p>Подробное описание: {{task.description}}</p>
         {% endif %}
-
+        <div class="task-links">
+            <a href="{% url 'update_task' task.pk%}" class="btn btn-light link">Редактировать</a>
+            <a href="{% url 'delete_task' task.pk%}" class="btn btn-light link">Удалить</a>
+        </div>
     </div>
-    <div class="detail-task-links">
-        <a href="{% url 'update_task' task.pk%}">Edit</a>
-        <a href="{% url 'delete_task' task.pk%}">Delete</a>
-    </div>
-    </div>
-    </div>
-    </div>
+</div>
     {% endblock %}

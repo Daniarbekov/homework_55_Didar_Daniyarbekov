@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Delete{% endblock %}
 {% block content %}
+<div class="delete-form">
     <h3>Вы уверены что хотите удалить задачу "{{ task.title }}"?</h3>
     <form method="POST" action="{% url 'delete_task' task.pk %}" class="text-center">
         {% csrf_token %}
-        <p><input type="submit" value="Удалить"></p>
-        <p><a href="{% url 'index' %}">Отмена</a></p>
+        <input type="submit" value="Удалить" class="btn btn-secondary link">
+        <a href="{% url 'index' %} " class="btn btn-secondary link">Отмена</a>
     </form>
+</div>
 {% endblock %}
